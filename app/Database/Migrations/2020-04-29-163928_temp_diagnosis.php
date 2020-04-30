@@ -2,7 +2,7 @@
 
 use CodeIgniter\Database\Migration;
 
-class Diagnosis extends Migration
+class TempDiagnosis extends Migration
 {
 	public function up()
 	{
@@ -14,18 +14,15 @@ class Diagnosis extends Migration
 				'auto_increment' => TRUE
 			],
 			'id_penyakit' => [
-				'type' => 'INT',			
+				'type' => 'VARCHAR',
+				'constraint' => 128,
+				'null' => FALSE				
 			],
 			'list_gejala' => [
 				'type' => 'VARCHAR',
 				'constraint' => 128,
 				'null' => FALSE			
-			],
-			'cf' => [
-				'type' => 'FLOAT',
-				'null' => TRUE
-			],
-			'created_at' => [
+			],'created_at' => [
 				'type' => 'datetime',
 				'null' => TRUE
 			],
@@ -39,7 +36,7 @@ class Diagnosis extends Migration
 			]
 		]);
 		$this->forge->addKey('id', TRUE);
-		$this->forge->createTable('Diagnosis');
+		$this->forge->createTable('TempDiagnosis');
 	}
 
 	//--------------------------------------------------------------------
@@ -47,6 +44,6 @@ class Diagnosis extends Migration
 	public function down()
 	{
 		//
-		$this->forge->dropTable('Diagnosis');
+		$this->forge->dropTable('TempDiagnosis');
 	}
 }

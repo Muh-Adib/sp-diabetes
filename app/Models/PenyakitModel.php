@@ -8,7 +8,7 @@ class PenyakitModel extends Model
 {
     protected $table = 'penyakit';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['id','kode', 'nama' , 'gejala','solusi','slug', 'status'];
+    protected $allowedFields = ['id','kode', 'nama' ,'solusi'];
     protected $useTimestamps = true;
     protected $createdField = 'created_at';
     protected $updatedField = 'updated_at';
@@ -17,15 +17,10 @@ class PenyakitModel extends Model
     protected $validationRules = [
         'kode' => 'required',
         'nama' => 'required',
-        'status' => 'required'
     ];
 
     protected $skipValidation = false;
     
-    public function getNama($id)
-    {
-        $nama=$this->where('id',$id)->findAll();
-        return $nama['nama'];
-    }
+    
   
 }

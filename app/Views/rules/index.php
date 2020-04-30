@@ -53,7 +53,7 @@
                                 
                             <?php } else { ?>
                                 <tr>
-                                    <td colspan="4" class="text-center">No Rulefound.</td>
+                                    <td colspan="4" class="text-center">Data Rule Kosong.</td>
                                 </tr>
 
                             <?php } ?>

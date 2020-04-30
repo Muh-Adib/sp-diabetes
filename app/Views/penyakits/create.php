@@ -41,13 +41,6 @@
                         <textarea name="solusi" id="post_content" class="form-control" required></textarea>
                     </div>
                     <div class="form-group">
-                        <label for="status">Status</label>
-                        <select name="status" id="" class="form-control">
-                            <option value="1" selected>Draft</option>
-                            <option value="2">Publish</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
                         <button class="btn btn-primary">Save</button>
                         <a href="<?= base_url('penyakit') ?>" class="btn btn-link">Back</a>
                     </div>

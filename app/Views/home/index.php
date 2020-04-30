@@ -8,11 +8,6 @@
             <div class="card">
                 <div class="card-header">
                     Home
-                    <nav>
-                        
-                    </nav>
-
-                    <a href="<?php echo base_url('diagnosis/create'); ?>" class="btn btn-primary btn-sm float-right">Tambah</a>
                 </div>
                 <div class="card-body">
 
@@ -27,6 +22,26 @@
                             <?php echo session()->getFlashdata('error'); ?>
                         </div>
                     <?php } ?>
+                    <div class="jumbotron jumbotron-fluid">
+                    <div class="container text-center">
+                        <h1 class="display-4">Sistem Pakar Diagnosa Penyakit Diabetes</h1>
+                        <p class="lead text-center">Disusun Oleh:</p>
+                                    <p>Noviyanti Ardi Ningsih		17.12.0284<br>
+                                    Muhammad Adib Aulia Hanif	17.12.0298</br>
+                                    Mega Satya Ajis			17.12.0292</br>
+                                    Onny Octaviany			17.12.0297</br>
+                                    Letshin Andherzon Ale		17.12.0339</p>
+
+
+                                    <p>Dosen Pengampu:</p>
+                                    <p class="lead"> Sunyoto, M.Kom., Dr.</p>
+                                    
+                                    SISTEM INFORMASI
+                                    UNIVERSITAS AMIKOM YOGYAKARTA
+                                    2019/2020
+
+                    </div>
+                    </div>
 
 
 

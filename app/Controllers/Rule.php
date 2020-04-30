@@ -43,9 +43,11 @@ class Rule extends BaseController
 	{
         $listPenyakit=$this->model_p->findAll();
         $listGejala=$this->model_g->findAll();
-        $data = ['title' => 'Create new Rule',
-        'list_p'=> $listPenyakit,
-        'list_g'=> $listGejala];
+        $data = ['title' => 'Tambah Rule Baru',
+        		 'list_p'=> $listPenyakit,
+				 'list_g'=> $listGejala,
+				 'rule' => $this->model->findAll(),
+				];
 
 		return view('Rules/create', $data);
 	}
@@ -56,6 +58,7 @@ class Rule extends BaseController
 		$id =$this->request->getPost('id');
 		$penyakit = $this->request->getPost('id_Penyakit');
 		$gejala = $this->request->getPost('id_Gejala');
+		$cf = $this->request->getPost('cf');
 
         if ($penyakit and $gejala) {
             # code...
@@ -66,11 +69,13 @@ class Rule extends BaseController
 				'id'=> $id,
 				'id_Penyakit' => $penyakit,
 				'id_Gejala'=> $gejala,
+				'cf'=> $cf
 			];}
 		else{
 			$data = [
 				'id_Penyakit' => $penyakit,
 				'id_Gejala'=> $gejala,
+				'cf'=> $cf
 			];
 		}
 			
@@ -78,7 +83,7 @@ class Rule extends BaseController
 
 		if ($save) {
 			session()->setFlashdata('success', 'Post has been added successfully.');
-			return redirect()->to(base_url('rule'));
+			return redirect()->back();
 		} else {
 			session()->setFlashdata('error', 'Some problems occured, please try again.');
 			return redirect()->back();
@@ -116,10 +121,10 @@ class Rule extends BaseController
 
 		if ($delete) {
 			session()->setFlashdata('success', 'Post has been removed successfully.');
-			return redirect()->to(base_url('rule'));
+			return redirect()->back();
 		} else {
 			session()->setFlashdata('error', 'Some problems occured, please try again.');
-			return redirect()->to(base_url('rule'));
+			return redirect()->back();
 		}
 
     }

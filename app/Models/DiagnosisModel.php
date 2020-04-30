@@ -4,21 +4,17 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class GejalaModel extends Model
+class DiagnosisModel extends Model
 {
-    protected $table = 'gejala';
+    protected $table = 'diagnosis';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['id','kode', 'nama'];
+    protected $allowedFields = ['id','id_penyakit', 'list_gejala' ,'cf'];
     protected $useTimestamps = true;
     protected $createdField = 'created_at';
     protected $updatedField = 'updated_at';
     protected $deletedField = 'deleted_at';
     
-    protected $validationRules = [
-        'kode' => 'required',
-        'nama' => 'required'
-    ];
-
-    protected $skipValidation = false;
+    
+    
 
 }

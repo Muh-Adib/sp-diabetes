@@ -23,7 +23,7 @@ class Penyakit extends BaseController
 		$data = [
 			'penyakits' => $this->model->paginate(10),
 			'pager' => $this->model->pager,
-			'title' => 'Penyakit LIST'
+			'title' => 'Daftar Penyakit'
 		];
 
 		return view('Penyakits/index', $data);
@@ -40,7 +40,7 @@ class Penyakit extends BaseController
 	{
 		$max = 'P'.$this->countdata();
 
-		$data = ['title' => 'Create new Penyakit' ,
+		$data = ['title' => 'Tambah Penyakit Baru' ,
 				 'max'=> strval($max) ];
 
 		return view('Penyakits/create', $data);
@@ -54,7 +54,6 @@ class Penyakit extends BaseController
 		$nama = $this->request->getPost('nama');
 		$gejala = $this->request->getPost('gejala');
 		$solusi = $this->request->getPost('solusi');
-		$status = $this->request->getPost('status');
 
 		
 		if($id!=null){
@@ -64,8 +63,6 @@ class Penyakit extends BaseController
 				'nama' => $nama,
 				'gejala'=> $gejala,
 				'solusi' => $solusi,
-				'status' => $status,
-				'slug' => url_title(strtolower($nama)),
 			];}
 		else{
 			$penyakit = [
@@ -73,8 +70,6 @@ class Penyakit extends BaseController
 				'nama' => $nama,
 				'gejala'=> $gejala,
 				'solusi' => $solusi,
-				'status' => $status,
-				'slug' => url_title(strtolower($nama)),
 			];
 		}
 			

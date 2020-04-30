@@ -7,8 +7,8 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    penyakit
-                    <a href="<?php echo base_url('penyakit/create'); ?>" class="btn btn-primary btn-sm float-right">New Record</a>
+                    Penyakit
+                    <a href="<?php echo base_url('penyakit/create'); ?>" class="btn btn-primary btn-sm float-right">Tambah</a>
                 </div>
                 <div class="card-body">
 
@@ -53,7 +53,7 @@
                                 <?php } ?>
                             <?php } else { ?>
                                 <tr>
-                                    <td colspan="4" class="text-center">No penyakit found.</td>
+                                    <td colspan="4" class="text-center">Data Penyakit Kosong.</td>
                                 </tr>
 
                             <?php } ?>

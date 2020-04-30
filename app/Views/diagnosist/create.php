@@ -23,16 +23,29 @@
                         </div>
                     <?php } ?>
 
-                    <?= form_open(''); ?>
-
-                    <div class="form-group">
-                    <p class="lead">Nama Gejala<?php echo $ycount ?></p>
+                    <?= form_open_multipart('diagnosis/store'); ?>
                     
+                    <div class="form-group text-center">
+                        <h2 class="lead text-center">Apakah Anda <?php echo $nama_gejala ?> ?</h2>
+                        <?=form_hidden('Q', $Q);?>
+                        <?=form_hidden('control', $control);?>
+                        <?=form_hidden('kode', $kode);?>
+                        <?=form_hidden('rute', $rute);?>
                     </div>
-                    <div class="form-group">
-                        <a href="<?php echo base_url('diagnosis/store/'.$ycount) ?>" class="btn btn-primary">count</a>
-                        <button name="t" value="<?= $ycount ?>" class="btn btn-primary" >Tidak</button>
-                        <button name="y" value="<?php echo $ycount ?>" class="btn btn-primary">Ya</button>
+                    <div class="form-group text-center">
+                    <label for="yakin">Yakin(%)</label>
+                        <select name="cf" id="" class="form-control ">
+                            <option value="1.0" selected>100% : Sangat Yakin</option>
+                            <option value="0.75" >75% : Yakin</option>
+                            <option value="0.5" >50% : Kurang</option>
+                            <option value="0.25" >25% : Sangat Kurang</option>
+                            
+                        </select>
+                    </div>
+                    <div class="form-group text-center">
+                        
+                        <button name="t" class="btn btn-primary" >Tidak</button>
+                        <button name="y" class="btn btn-primary">Ya</button>
                     </div>
                     
                     <div class="form-group">
@@ -41,8 +54,33 @@
                     </div>
                     <?= form_close(); ?>
 
+                    <table class="table table-bordered">
+                        <thead class="text-center">
+                            <tr>
+                                <th scope="col">Kode</th>
+                                <th scope="col">Gejala</th>
+                                <th scope="col">Kepastian</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-center">
+                            <?php if (!empty($log) && is_array($log)) { ?>
 
+                                <?php foreach ($log as $row){?>
+                                <tr>
+                                        <td><?= $row['kode']; ?></td>
+                                        <td><?php foreach($gejala as $g){if($row['kode']==$g['kode']){echo $g['nama'];}} ?></td>
+                                        <td><?= $row['cf']; ?></td>
+                                </tr>
+                                <?php } ?>
+                                
+                            <?php } else { ?>
+                                <tr>
+                                    <td colspan="4" class="text-center">Data Diagnosis belum ada.</td>
+                                </tr>
 
+                            <?php } ?>
+                        </tbody>
+                    </table>
 
 
                 </div>

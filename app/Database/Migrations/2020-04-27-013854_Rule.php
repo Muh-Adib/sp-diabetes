@@ -43,5 +43,6 @@ class Rule extends Migration
 	public function down()
 	{
 		//
+		$this->forge->dropTable('Rule');
 	}
 }

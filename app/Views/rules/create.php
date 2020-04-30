@@ -40,12 +40,49 @@
                         </select>
                     </div>
                     <div class="form-group">
+                        <label for="id_Gejala">Belief</label>
+                        <select name="cf" id="" class="form-control">
+                            <?php for($i=0;$i<99;$i++) {?>
+                            <option value="<?= 0,$i?>"><?php echo $i.'%'?></option><?php }?>
+                        </select>
+                    </div>
+                    <div class="form-group">
                         <button class="btn btn-primary">Save</button>
                         <a href="<?= base_url('rule') ?>" class="btn btn-link">Back</a>
                     </div>
                     <?= form_close(); ?>
 
+                    <table class="table table-bordered">
+                        <thead class="text-center">
+                            <tr>
+                                <th scope="col">Kode Penyakit</th>
+                                <th scope="col">Kode Gejala</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-center">
+                            <?php if (!empty($rule) && is_array($rule)) { ?>
 
+                                <?php foreach ($list_p as $no){?>
+                                <tr>
+                                    <td>
+                                        <?php echo $no['nama'] ?>
+                                    </td>
+                                    <td><?php  foreach($rule as $row){if ($row['id_Penyakit']==$no['id']) {
+                                        foreach($list_g as $value){if ($value['id']==$row['id_Gejala']) {
+                                        ?> <a href="<?php echo base_url('rule/destroy/' . $row['id']); ?>" class="btn btn-danger btn-sm" onclick="return confirm('kamu yakin akan hapus?');">
+                                        <?php 
+                                            echo $value['kode'];
+                                        ?></a> <?php } }
+                                    }}  ?></td>
+                                </tr>
+                                <?php } ?>
+                                
+                            <?php } else { ?>
+                                <tr>
+                                    <td colspan="4" class="text-center">Data Rule Kosong.</td>
+                                </tr>
+
+                            <?php } ?>
 
 
 

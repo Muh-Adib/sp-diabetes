@@ -8,7 +8,7 @@
             <div class="card">
                 <div class="card-header">
                     Gejala
-                    <a href="<?php echo base_url('gejala/create'); ?>" class="btn btn-primary btn-sm float-right">New Record</a>
+                    <a href="<?php echo base_url('gejala/create'); ?>" class="btn btn-primary btn-sm float-right">Tambah</a>
                 </div>
                 <div class="card-body">
 
@@ -52,7 +52,7 @@
                                 <?php } ?>
                             <?php } else { ?>
                                 <tr>
-                                    <td colspan="4" class="text-center">No gejala found.</td>
+                                    <td colspan="4" class="text-center">Data Gejala Kosong.</td>
                                 </tr>
 
                             <?php } ?>

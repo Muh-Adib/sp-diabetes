@@ -43,14 +43,7 @@
                         <label for="solusi">Solusi</label>
                         <textarea name="solusi" id="post_content" class="form-control"  required><?php echo htmlspecialchars($penyakit['solusi'])?></textarea>
                     </div>
-                    <div class="form-group">
-                        <label for="status">Status</label>
-                        <select name="status" id="" class="form-control">
-                            <?php $option=[1 => 'Draft',2 => 'Publised' ];
-                            foreach ($option as $key => $value) {?>
-                            <option value="<?= $key?>"<?php if($key == $penyakit['status']) echo "selected"?>><?php echo $value?></option><?php }?>
-                        </select>
-                    </div>
+            
                     <div class="form-group">
                         <button class="btn btn-primary">Update</button>
                         <a href="<?= base_url('penyakit') ?>" class="btn btn-link">Back</a>

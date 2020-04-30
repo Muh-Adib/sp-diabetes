@@ -23,7 +23,7 @@ class gejala extends BaseController
 		$data = [
 			'gejala' => $this->model->paginate(10),
 			'pager' => $this->model->pager,
-			'title' => 'gejala LIST'
+			'title' => 'Daftar Gejala'
 		];
 
 		return view('Gejalas/index', $data);
@@ -39,7 +39,7 @@ class gejala extends BaseController
 	{
 		$max = "G".$this->countdata();
 
-		$data = ['title' => 'Create new Gejala',
+		$data = ['title' => 'Tambah Gejala Baru',
 				 'max'=> $max];
 
 		return view('gejalas/create', $data);
@@ -57,13 +57,11 @@ class gejala extends BaseController
 				'id'=> $id,
 				'kode' => $kode,
 				'nama' => $nama,
-				'slug' => url_title(strtolower($nama)),
 			];}
 		else{
 			$gejala = [
 				'kode' => $kode,
 				'nama' => $nama,
-				'slug' => url_title(strtolower($nama)),
 			];
 		}
 			

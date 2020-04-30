@@ -8,23 +8,21 @@
             <div class="card">
                 <div class="card-header">
                     Rule
-                    <a href="<?php echo base_url('diagnosis/create'); ?>" class="btn btn-primary btn-sm float-right">Tambah</a>
+                    <a href="<?= base_url('diagnosis/create'); ?>" class="btn btn-primary btn-sm float-right">Tambah</a>
                 </div>
                 <div class="card-body">
 
                     <?php if (session()->getFlashdata('success')) { ?>
                         <div class="alert alert-success">
-                            <?php echo session()->getFlashdata('success'); ?>
+                            <?= session()->getFlashdata('success'); ?>
                         </div>
                     <?php } ?>
 
                     <?php if (session()->getFlashdata('error')) { ?>
                         <div class="alert alert-danger">
-                            <?php echo session()->getFlashdata('error'); ?>
+                            <?= session()->getFlashdata('error'); ?>
                         </div>
                     <?php } ?>
-
-
 
                     <table class="table table-bordered">
                         <thead class="text-center">
@@ -38,26 +36,25 @@
                             </tr>
                         </thead>
                         <tbody class="text-center">
-                            <?php if (!empty($rule) && is_array($rule)) { ?>
+                            <?php if (!empty($diagnosis) && is_array($diagnosis)) { ?>
 
-                                <?php foreach ($listPenyakit as $no){?>
+                                <?php foreach ($diagnosis as $row){?>
                                 <tr>
-                                    <td>
-                                        <?php echo $no['nama'] ?>
-                                    </td>
-                                    <td><?php  foreach($rule as $row){if ($row['id_Penyakit']==$no['id']) {
-                                        foreach($listGejala as $value){if ($value['id']==$row['id_Gejala']) {
-                                        ?> <a href="<?php echo base_url('rule/edit/' . $row['id']); ?>" class="btn btn-primary btn-sm">
-                                        <?php 
-                                            echo $value['kode'];
-                                        ?></a> <?php } }
-                                    }}  ?></td>
+                                        <td> 
+                                         <?php foreach ($penyakit as $key) {
+                                            if($row['id_penyakit']==$key['id']){echo $key['nama']; }
+                                        }?>
+                                        </td>
+                                        <td><?= $row['list_gejala']; ?></td>
+                                        <td><?= $row['cf']; ?></td>
+                                        <td><?= $row['created_at']; ?></td>
+                                        <td><a href="<?php echo base_url('penyakit/edit/' . $row['id']); ?>" class="btn btn-primary btn-sm">Detail</a></td>
                                 </tr>
                                 <?php } ?>
                                 
                             <?php } else { ?>
                                 <tr>
-                                    <td colspan="4" class="text-center">No Rulefound.</td>
+                                    <td colspan="4" class="text-center">Data Diagnosis belum ada.</td>
                                 </tr>
 
                             <?php } ?>
