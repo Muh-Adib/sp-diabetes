@@ -13,16 +13,20 @@ class Diagnosis extends Migration
 				'unsigned' => TRUE,
 				'auto_increment' => TRUE
 			],
-			'id_penyakit' => [
-				'type' => 'INT',			
-			],
-			'list_gejala' => [
+			
+			'nama' => [
 				'type' => 'VARCHAR',
 				'constraint' => 128,
 				'null' => FALSE			
 			],
-			'cf' => [
-				'type' => 'FLOAT',
+			'ket' => [
+				'type' => 'VARCHAR',
+				'constraint' => 128,
+				'null' => FALSE			
+			],
+			'gejala' => [
+				'type' => 'VARCHAR',
+				'constraint' => 128,
 				'null' => TRUE
 			],
 			'created_at' => [

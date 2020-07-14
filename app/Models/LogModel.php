@@ -8,7 +8,7 @@ class LogModel extends Model
 {
     protected $table = 'LogDiagnosis';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['id','id_gejala', 'jawaban'];
+    protected $allowedFields = ['id','id_gejala', 'cf'];
     protected $useTimestamps = true;
     protected $createdField = 'created_at';
     protected $updatedField = 'updated_at';

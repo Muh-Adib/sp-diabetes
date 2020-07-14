@@ -8,7 +8,7 @@ class GejalaModel extends Model
 {
     protected $table = 'gejala';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['id','kode', 'nama'];
+    protected $allowedFields = ['id','kode', 'detail'];
     protected $useTimestamps = true;
     protected $createdField = 'created_at';
     protected $updatedField = 'updated_at';

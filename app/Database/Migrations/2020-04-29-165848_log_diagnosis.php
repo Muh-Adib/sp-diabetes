@@ -16,10 +16,10 @@ class LogDiagnosis extends Migration
 			'id_gejala' => [
 				'type' => 'INT',			
 			],
-			'jawab' => [
-				'type' => 'VARCHAR',
-				'constraint' => 128,
-				'null' => FALSE			
+			'cf' => [
+				'type' => 'FLOAT',
+				'null' => FALSE	
+						
 			],'created_at' => [
 				'type' => 'datetime',
 				'null' => TRUE

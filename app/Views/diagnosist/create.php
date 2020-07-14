@@ -23,29 +23,23 @@
                         </div>
                     <?php } ?>
 
-                    <?= form_open_multipart('diagnosis/store'); ?>
+                    <?= form_open_multipart('diagnosis/create'); ?>
                     
                     <div class="form-group text-center">
-                        <h2 class="lead text-center">Apakah Anda <?php echo $nama_gejala ?> ?</h2>
+                        <h2 class="lead text-center">Apakah <?php echo $nama." ".$nama_gejala ?> ?</h2>
                         <?=form_hidden('Q', $Q);?>
                         <?=form_hidden('control', $control);?>
                         <?=form_hidden('kode', $kode);?>
                         <?=form_hidden('rute', $rute);?>
                     </div>
                     <div class="form-group text-center">
-                    <label for="yakin">Yakin(%)</label>
-                        <select name="cf" id="" class="form-control ">
-                            <option value="1.0" selected>100% : Sangat Yakin</option>
-                            <option value="0.75" >75% : Yakin</option>
-                            <option value="0.5" >50% : Kurang</option>
-                            <option value="0.25" >25% : Sangat Kurang</option>
-                            
-                        </select>
-                    </div>
+                    
                     <div class="form-group text-center">
-                        
-                        <button name="t" class="btn btn-primary" >Tidak</button>
-                        <button name="y" class="btn btn-primary">Ya</button>
+                        <button name="y" value=1 class="btn btn-primary" >Iya</button>
+                        <button name="y" value=0.8 class="btn btn-primary" >Kadang</button>
+                        <button name="y" value=0.4 class="btn btn-primary" >Jarang</button>
+                        <button name="y" value=0.2 class="btn btn-primary" >Tidak Yakin</button>
+                        <button name="n" value=0 class="btn btn-primary" >Tidak</button>
                     </div>
                     
                     <div class="form-group">
@@ -67,9 +61,10 @@
 
                                 <?php foreach ($log as $row){?>
                                 <tr>
-                                        <td><?= $row['kode']; ?></td>
-                                        <td><?php foreach($gejala as $g){if($row['kode']==$g['kode']){echo $g['nama'];}} ?></td>
-                                        <td><?= $row['cf']; ?></td>
+                                <?php foreach($gejala as $g){if($row['id_gejala']==$g['id']){?>
+                                        <td><?= $g['kode']; ?></td>
+                                        <td><?= $g['detail'];}} ?></td>
+                                        <td><?= $row['cf'] ?></td>
                                 </tr>
                                 <?php } ?>
                                 

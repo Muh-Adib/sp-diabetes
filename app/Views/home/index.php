@@ -6,9 +6,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">
-                    Home
-                </div>
+                
                 <div class="card-body">
 
                     <?php if (session()->getFlashdata('success')) { ?>
@@ -38,45 +36,81 @@
                                     
                                     SISTEM INFORMASI
                                     UNIVERSITAS AMIKOM YOGYAKARTA
-                                    2019/2020
+                                    2019/2020<br>
+                                    <a href="<?php echo base_url('diagnosis'); ?>"><span class="btn btn-primary btn-sm ">Diagnosis </span></a>
 
                     </div>
                     </div>
 
 
 
-                    <table class="table table-bordered">
+                    <table class="table table-hover">
                         <thead class="text-center">
                             <tr>
-                                <th scope="col">Nama Penyakit</th>
-                                <th scope="col">Kode Gejala</th>
-                                <th scope="col">Valid(%)</th>
-                                <th scope="col">Create At</th>
-                                <th scope="col">Action</th>
+                                <th scope="col">Nama</th>
+                                <th scope="col">Penyakit</th>
+                                <th scope="col">Gejala</th>
+                                <th scope="col">Tanggal Cek-Up</th>
                                 
                             </tr>
                         </thead>
                         <tbody class="text-center">
-                            <?php if (!empty($rule) && is_array($rule)) { ?>
+                            <?php if (!empty($diagnosis) && is_array($diagnosis)) { ?>
 
-                                <?php foreach ($listPenyakit as $no){?>
-                                <tr>
-                                    <td>
-                                        <?php echo $no['nama'] ?>
-                                    </td>
-                                    <td><?php  foreach($rule as $row){if ($row['id_Penyakit']==$no['id']) {
-                                        foreach($listGejala as $value){if ($value['id']==$row['id_Gejala']) {
-                                        ?> <a href="<?php echo base_url('rule/edit/' . $row['id']); ?>" class="btn btn-primary btn-sm">
-                                        <?php 
-                                            echo $value['kode'];
-                                        ?></a> <?php } }
-                                    }}  ?></td>
+                                <?php foreach ($diagnosis as $d){
+                                    $ket=json_decode($d['ket'],true);
+                                    $gej=json_decode($d['gejala'],true);
+                                    $keya=current(array_keys($ket));
+                                    foreach ($penyakit as $p ) {
+                                        # code...
+                                        if ($p['kode'] == $keya) {
+                                            # code... 
+                                            $sakit = $p['nama'];
+                                            $pe = $p['penyebab'];
+                                        }
+                                    } 
+                                    ?>
+                                    
+                                <tr data-toggle="tooltip" 
+                                    data-placement="bottom" 
+                                    title="<?=$pe?>"
+                                    onclick="window.location='<?php echo base_url('diagnosis/show/' . $d['id']); ?>'";
+                                    >
+                                        <td> 
+                                         <?=$d['nama']; ?>
+                                        </td>
+                                        <td>
+                                        <?=$sakit?>
+                                        </td>
+                                        <td>
+                                        <?php
+                                        foreach ($gej as $g ) {
+                                            # code...
+                                            foreach ($gejala as $dtlg) {
+                                                # code...
+                                                if ($dtlg['id'] == $g) {
+                                                    # code...
+                                                    $dtg = $dtlg;
+                                                }
+                                            }
+                                            ?>
+                                            <span class="btn btn-danger"  data-toggle="tooltip" 
+                                                            data-placement="bottom" 
+                                                            title="<?=$dtg['detail']?>" 
+                                                            
+                                                            ><?=$dtg['kode']?></span>
+                                            <?php
+                                        }
+                                            ?>
+                                        </td>
+                                        <td><?= $d['created_at'] ?></td>
+                                        
                                 </tr>
                                 <?php } ?>
                                 
                             <?php } else { ?>
                                 <tr>
-                                    <td colspan="4" class="text-center">No Rulefound.</td>
+                                    <td colspan="4" class="text-center">Data Diagnosis belum ada.</td>
                                 </tr>
 
                             <?php } ?>

@@ -23,24 +23,18 @@ class Penyakit extends Migration
 				'constraint' => 128,
 				'null' => FALSE,
 			],
-			'gejala' => [
-				'type' => 'VARCHAR',
-				'constraint' => 128,
+			'penyebab' => [
+				'type' => 'TEXT',
 				'null' => TRUE,
 			],
 			'solusi' => [
 				'type' => 'TEXT',
-				'null' => FALSE
+				'null' => TRUE
 			],
 			'slug' => [
 				'type' => 'VARCHAR',
 				'constraint' => 128,
-				'null' => FALSE
-			],
-			'status' => [
-				'type' => 'INT',
-				'constraint' => 1,
-				'null' => FALSE
+				'null' => TRUE
 			],
 			'created_at' => [
 				'type' => 'datetime',
@@ -58,6 +52,8 @@ class Penyakit extends Migration
 
 		$this->forge->addKey('id', TRUE);
 		$this->forge->createTable('penyakit');
+
+		
 	}
 
 	//--------------------------------------------------------------------

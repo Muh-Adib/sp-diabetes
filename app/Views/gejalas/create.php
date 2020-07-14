@@ -29,8 +29,8 @@
                         <input type="text" name="kode" class="form-control" value="<?php echo $max;?>" required>
                     </div>
                     <div class="form-group">
-                        <label for="nama">Nama</label>
-                        <input type="text" name="nama" class="form-control" required>
+                        <label for="nama">Detail</label>
+                        <input type="text" name="detail" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <button class="btn btn-primary">Save</button>

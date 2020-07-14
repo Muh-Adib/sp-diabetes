@@ -1,5 +1,7 @@
 <?php namespace App\Controllers;
 use App\Models\DiagnosisModel;
+use App\Models\PenyakitModel;
+use App\Models\GejalaModel;
 class Home extends BaseController
 {
 	
@@ -11,6 +13,8 @@ class Home extends BaseController
 
 	public function __construct()
 	{
+		$this->penyakit = new PenyakitModel();
+		$this->gejala = new GejalaModel();
 		$this->model = new DiagnosisModel();
 		$this->helpers = ['form', 'url'];
 		
@@ -19,9 +23,11 @@ class Home extends BaseController
 	public function index()
 	{
 		$data = [
-			'gejala' => $this->model->paginate(10),
+			'penyakit'=> $this->penyakit->findAll(),
+            'gejala'=> $this->gejala->findAll(),
+			'diagnosis' => $this->model->orderBy('created_at', 'DESC')->paginate(10),
 			'pager' => $this->model->pager,
-			'title' => 'Home'
+			'title' => 'Home',
 		];
 
 		return view('home/index', $data);

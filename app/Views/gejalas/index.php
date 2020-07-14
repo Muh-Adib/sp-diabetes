@@ -26,27 +26,21 @@
 
 
 
-                    <table class="table table-bordered">
+                    <table class="table table-hover">
                         <thead class="text-center">
                             <tr>
                                 <th scope="col">Kode</th>
-                                <th scope="col">Nama</th>
-                                <th scope="col">Created Date</th>
-                                <th scope="col">Action</th>
+                                <th scope="col">Gejala</th>
                             </tr>
                         </thead>
                         <tbody class="text-center">
                             <?php if (!empty($gejala) && is_array($gejala)) { ?>
                                 <?php foreach ($gejala as $row) { ?>
-                                    <tr>
+                                    <tr onclick="window.location='<?php echo base_url('gejala/edit/' . $row['id']); ?>'";>
                                         <td><?php echo $row['kode']; ?></td>
-                                        <td><?php echo $row['nama']; ?></td>
+                                        <td><?php echo $row['detail']; ?></td>
                                         
-                                        <td><?= $row['created_at'] ?></td>
-                                        <td>
-                                            <a href="<?php echo base_url('gejala/edit/' . $row['id']); ?>" class="btn btn-primary btn-sm">Edit</a>
-                                            <a href="<?php echo base_url('gejala/destroy/' . $row['id']); ?>" class="btn btn-danger btn-sm" onclick="return confirm('kamu yakin?');">Delete</a>
-                                        </td>
+                                        
                                     </tr>
 
                                 <?php } ?>

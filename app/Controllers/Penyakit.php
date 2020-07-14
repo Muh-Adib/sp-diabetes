@@ -52,7 +52,7 @@ class Penyakit extends BaseController
 		$id =$this->request->getPost('id');
 		$kode = $this->request->getPost('kode');
 		$nama = $this->request->getPost('nama');
-		$gejala = $this->request->getPost('gejala');
+		$penyebab = $this->request->getPost('penyebab');
 		$solusi = $this->request->getPost('solusi');
 
 		
@@ -61,14 +61,14 @@ class Penyakit extends BaseController
 				'id'=> $id,
 				'kode' => $kode,
 				'nama' => $nama,
-				'gejala'=> $gejala,
+				'penyebab'=> $penyebab,
 				'solusi' => $solusi,
 			];}
 		else{
 			$penyakit = [
 				'kode' => $kode,
 				'nama' => $nama,
-				'gejala'=> $gejala,
+				'penyebab'=> $penyebab,
 				'solusi' => $solusi,
 			];
 		}

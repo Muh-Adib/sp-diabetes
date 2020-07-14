@@ -6,8 +6,9 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">
-                    <?= $title ?>
+                <div class="card-header d-flex justify-content-between">
+                
+                    <?= $title ?><a href="<?= base_url('penyakit') ?>" class="btn btn-danger">Hapus</a>
                 </div>
                 <div class="card-body">
 
@@ -29,24 +30,25 @@
                    
                     <div class="form-group">
                         <label for="kode">Kode</label>
-                        <input type="text" name="kode" value="<?php echo $penyakit['kode'];?>" class="form-control" required>
+                        <input type="text" name="kode" value="<?php echo $penyakit['kode'];?>" class="form-control "readonly required>
                     </div>
                     <div class="form-group">
                         <label for="nama">Nama</label>
                         <input type="text" name="nama" value="<?php echo $penyakit['nama'];?>" class="form-control" required>
                     </div>
                     <div class="form-group">
-                        <label for="gejala">Gejala</label>
-                        <input type="text" name="gejala" value="<?php echo $penyakit['gejala'];?>" class="form-control" required>
+                        <label for="penyebab">Penyebab</label>
+                        <textarea type="text" name="penyebab" class="form-control" required rows="5"><?php echo $penyakit['penyebab'];?></textarea>
                     </div>
                     <div class="form-group">
                         <label for="solusi">Solusi</label>
-                        <textarea name="solusi" id="post_content" class="form-control"  required><?php echo htmlspecialchars($penyakit['solusi'])?></textarea>
+                        <textarea name="solusi" id="post_content" class="form-control"  required rows="5"><?php echo htmlspecialchars($penyakit['solusi'])?></textarea>
                     </div>
             
-                    <div class="form-group">
+                    <div class="form-group float-right">
+                        <a href="<?= base_url('penyakit') ?>" class="btn btn-link">Kembali</a>
                         <button class="btn btn-primary">Update</button>
-                        <a href="<?= base_url('penyakit') ?>" class="btn btn-link">Back</a>
+                        
                     </div>
                     <?= form_close(); ?>
 

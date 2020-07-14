@@ -26,24 +26,27 @@
 
 
 
-                    <table class="table table-bordered">
+                    <table class="table table-hover">
                         <thead class="text-center">
                             <tr>
-                                <th scope="col">Kode Penyakit</th>
+                                <th scope="col">Penyakit</th>
                                 <th scope="col">Kode Gejala</th>
                             </tr>
                         </thead>
-                        <tbody class="text-center">
+                        <tbody >
                             <?php if (!empty($rule) && is_array($rule)) { ?>
 
                                 <?php foreach ($listPenyakit as $no){?>
                                 <tr>
-                                    <td>
+                                    <td class="text-center">
                                         <?php echo $no['nama'] ?>
                                     </td>
-                                    <td><?php  foreach($rule as $row){if ($row['id_Penyakit']==$no['id']) {
-                                        foreach($listGejala as $value){if ($value['id']==$row['id_Gejala']) {
-                                        ?> <a href="<?php echo base_url('rule/edit/' . $row['id']); ?>" class="btn btn-primary btn-sm">
+                                    <td class="text-left">
+                                        <?php  foreach($rule as $row)
+                                        {if ($row['id_penyakit']==$no['id']) {
+                                            foreach($listGejala as $value)
+                                            {if ($value['id']==$row['id_gejala']) {
+                                                ?> <a href="<?php echo base_url('rule/edit/' . $row['id']); ?>" class="btn btn-primary btn-sm">
                                         <?php 
                                             echo $value['kode'];
                                         ?></a> <?php } }

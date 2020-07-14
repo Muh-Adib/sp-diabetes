@@ -18,15 +18,10 @@ class Gejala extends Migration
 				'constraint' => 128,
 				'null' => FALSE,
 			],
-			'nama' => [
+			'detail' => [
 				'type' => 'VARCHAR',
 				'constraint' => 128,
 				'null' => FALSE,
-			],
-			'slug' => [
-				'type' => 'VARCHAR',
-				'constraint' => 128,
-				'null' => FALSE
 			],
 			'created_at' => [
 				'type' => 'datetime',

@@ -41,11 +41,10 @@ class Rule extends BaseController
 
 	public function create()
 	{
-        $listPenyakit=$this->model_p->findAll();
-        $listGejala=$this->model_g->findAll();
-        $data = ['title' => 'Tambah Rule Baru',
-        		 'list_p'=> $listPenyakit,
-				 'list_g'=> $listGejala,
+        
+		$data = ['title' => 'Tambah Rule Baru',
+        		 'list_p'=> $this->model_p->findAll(),
+				 'list_g'=> $this->model_g->findAll(),
 				 'rule' => $this->model->findAll(),
 				];
 
@@ -55,14 +54,12 @@ class Rule extends BaseController
 	public function store()
 	{
 		$primaryKey = 'id';
-		$id =$this->request->getPost('id');
+		$id = $this->request->getPost('id');
 		$penyakit = $this->request->getPost('id_Penyakit');
 		$gejala = $this->request->getPost('id_Gejala');
 		$cf = $this->request->getPost('cf');
 
-        if ($penyakit and $gejala) {
-            # code...
-        }
+        
         
 		if($id!=null){
 			$data = [
@@ -83,7 +80,7 @@ class Rule extends BaseController
 
 		if ($save) {
 			session()->setFlashdata('success', 'Post has been added successfully.');
-			return redirect()->back();
+			return redirect('/rule');
 		} else {
 			session()->setFlashdata('error', 'Some problems occured, please try again.');
 			return redirect()->back();
@@ -132,13 +129,13 @@ class Rule extends BaseController
     function cariNama($id,$m)
     {
         if($m=="g"){
-        foreach ($this->model_g as $key => $value) {
+        foreach ($this->model_g as $value) {
             if ($value['id']==$id) {
                 $nama=$value['nama'];
             }
         }
     }else{
-        foreach ($this->model_p as $key => $value) {
+        foreach ($this->model_p as $value) {
             if ($value['id']==$id) {
                 $nama=$value['nama'];
             }
@@ -147,19 +144,6 @@ class Rule extends BaseController
         return $nama;
     }
 
-	public function GenerateList()
-    {
-        $db = \Config\Database::connect();
-       /*  $query=$db->$query("SELECT a.nama, b.nama"); */
-        $listPenyakit=$this->model_p->findAll();
-        $listGejala=$this->model_g->findAll();
-        $list=[];
-        foreach ($this->model->findAll() as $key => $value) {
-            if ($this->model['id_Penyakit']) {
-                # code...
-            }
-            
-        }
-    }
+	
 
 }

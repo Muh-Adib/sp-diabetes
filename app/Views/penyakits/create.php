@@ -26,23 +26,23 @@
                     <?= form_open('penyakit/store'); ?>
                     <div class="form-group">
                         <label for="kode">Kode</label>
-                        <input type="text" name="kode" class="form-control" value="<?php echo $max?>" required>
+                        <input type="text" name="kode" class="form-control "readonly value="<?php echo $max?>" required>
                     </div>
                     <div class="form-group">
                         <label for="nama">Nama</label>
                         <input type="text" name="nama" class="form-control" required>
                     </div>
                     <div class="form-group">
-                        <label for="gejala">Gejala</label>
-                        <input type="text" name="gejala" class="form-control" required>
+                        <label for="penyebab">Penyebab</label>
+                        <textarea type="text" name="penyebab" class="form-control" required rows="5"></textarea>
                     </div>
                     <div class="form-group">
                         <label for="solusi">Solusi</label>
-                        <textarea name="solusi" id="post_content" class="form-control" required></textarea>
+                        <textarea name="solusi" id="post_content" class="form-control"  required rows="5"></textarea>
                     </div>
-                    <div class="form-group">
-                        <button class="btn btn-primary">Save</button>
+                    <div class="form-group float-right">
                         <a href="<?= base_url('penyakit') ?>" class="btn btn-link">Back</a>
+                        <button class="btn btn-primary">Save</button>                        
                     </div>
                     <?= form_close(); ?>
 

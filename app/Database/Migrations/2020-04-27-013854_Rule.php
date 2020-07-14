@@ -13,12 +13,16 @@ class Rule extends Migration
 				'unsigned' => TRUE,
 				'auto_increment' => TRUE
 			],
-			'id_Penyakit' => [
+			'id_penyakit' => [
 				'type' => 'INT',
 				'null' => FALSE,
 			],
-			'id_Gejala' => [
+			'id_gejala' => [
 				'type' => 'INT',
+				'null' => FALSE,
+			],
+			'cf' => [
+				'type' => 'FLOAT',
 				'null' => FALSE,
 			],
 			'created_at' => [

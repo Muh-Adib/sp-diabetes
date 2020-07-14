@@ -5,10 +5,21 @@
 <div class="container mt-5">
     <div class="row">
         <div class="col-md-12">
+            <div class="col-md-8 d-flex text-center">
+                <?=form_open('diagnosis/create')?>
+                <div class="form-group">
+                    <h2>Mulai Diagnosis</h2>
+                    <label for="nama">Masukan Nama Anda</label>
+                    <input type="text" name="nama" id="nama" class="form-control my-3" required>
+                    <button type="submit" class="btn btn-primary">Buat Diagnosis</button>
+                </div>
+                <?=form_close()?>
+
+            </div>
             <div class="card">
                 <div class="card-header">
-                    Rule
-                    <a href="<?= base_url('diagnosis/create'); ?>" class="btn btn-primary btn-sm float-right">Tambah</a>
+                    Diagnosis
+                    
                 </div>
                 <div class="card-body">
 
@@ -22,33 +33,69 @@
                         <div class="alert alert-danger">
                             <?= session()->getFlashdata('error'); ?>
                         </div>
-                    <?php } ?>
+                    <?php }  ?>
 
-                    <table class="table table-bordered">
+                    <table class="table table-hover">
                         <thead class="text-center">
                             <tr>
-                                <th scope="col">Nama Penyakit</th>
-                                <th scope="col">Kode Gejala</th>
-                                <th scope="col">Valid(%)</th>
-                                <th scope="col">Create At</th>
-                                <th scope="col">Action</th>
+                                <th scope="col">Nama</th>
+                                <th scope="col">Penyakit</th>
+                                <th scope="col">Gejala</th>
+                                <th scope="col">Tanggal Cek-Up</th>
                                 
                             </tr>
                         </thead>
                         <tbody class="text-center">
                             <?php if (!empty($diagnosis) && is_array($diagnosis)) { ?>
 
-                                <?php foreach ($diagnosis as $row){?>
-                                <tr>
+                                <?php foreach ($diagnosis as $d){
+                                    $ket=json_decode($d['ket'],true);
+                                    $gej=json_decode($d['gejala'],true);
+                                    $keya=current(array_keys($ket));
+                                    foreach ($penyakit as $p ) {
+                                        # code...
+                                        if ($p['kode'] == $keya) {
+                                            # code... 
+                                            $sakit = $p['nama'];
+                                            $pe = $p['penyebab'];
+                                        }
+                                    } 
+                                    ?>
+                                    
+                                <tr data-toggle="tooltip" 
+                                    data-placement="bottom" 
+                                    title="<?=$pe?>"
+                                    onclick="window.location='<?php echo base_url('diagnosis/show/' . $d['id']); ?>'";
+                                    >
                                         <td> 
-                                         <?php foreach ($penyakit as $key) {
-                                            if($row['id_penyakit']==$key['id']){echo $key['nama']; }
-                                        }?>
+                                         <?=$d['nama']; ?>
                                         </td>
-                                        <td><?= $row['list_gejala']; ?></td>
-                                        <td><?= $row['cf']; ?></td>
-                                        <td><?= $row['created_at']; ?></td>
-                                        <td><a href="<?php echo base_url('penyakit/edit/' . $row['id']); ?>" class="btn btn-primary btn-sm">Detail</a></td>
+                                        <td>
+                                        <?=$sakit?>
+                                        </td>
+                                        <td>
+                                        <?php
+                                        foreach ($gej as $g ) {
+                                            # code...
+                                            foreach ($gejala as $dtlg) {
+                                                # code...
+                                                if ($dtlg['id'] == $g) {
+                                                    # code...
+                                                    $dtg = $dtlg;
+                                                }
+                                            }
+                                            ?>
+                                            <span class="btn btn-danger"  data-toggle="tooltip" 
+                                                            data-placement="bottom" 
+                                                            title="<?=$dtg['detail']?>" 
+                                                            
+                                                            ><?=$dtg['kode']?></span>
+                                            <?php
+                                        }
+                                            ?>
+                                        </td>
+                                        <td><?= $d['created_at'] ?></td>
+                                        
                                 </tr>
                                 <?php } ?>
                                 
@@ -61,7 +108,7 @@
                         </tbody>
                     </table>
 
-                    <?= $pager->links(); ?>
+                    
                 </div>
 
             </div>

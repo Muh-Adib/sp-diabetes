@@ -8,7 +8,7 @@ class DiagnosisModel extends Model
 {
     protected $table = 'diagnosis';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['id','id_penyakit', 'list_gejala' ,'cf'];
+    protected $allowedFields = ['id','nama', 'ket' ,'gejala'];
     protected $useTimestamps = true;
     protected $createdField = 'created_at';
     protected $updatedField = 'updated_at';

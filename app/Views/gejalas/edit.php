@@ -6,9 +6,9 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">
-                    <?= $title ?>
-                </div>
+            <div class="card-header d-flex justify-content-between">
+                <?= $title ?><a href="<?= base_url('penyakit') ?>" class="btn btn-danger">Hapus</a>
+            </div>
                 <div class="card-body">
 
                     <?php if (session()->getFlashdata('success')) { ?>
@@ -32,8 +32,8 @@
                         <input type="text" name="kode" value="<?php echo $gejala['kode'];?>" class="form-control" required>
                     </div>
                     <div class="form-group">
-                        <label for="nama">Nama</label>
-                        <input type="text" name="nama" value="<?php echo $gejala['nama'];?>" class="form-control" required>
+                        <label for="nama">Detail</label>
+                        <input type="text" name="nama" value="<?php echo $gejala['detail'];?>" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <button class="btn btn-primary">Update</button>
