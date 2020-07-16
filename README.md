@@ -1,13 +1,22 @@
-# Instalation
+# Sistem Pakar Penyakit Diabetes
+
+Sistem Pakar Diabetes menggunakan metode Chain Forwading 
+
+Sistem ini menggunakan association rule sebagai generator pertanyaan untuk menentukan penyakit yang diderita pasien. Sistem ini bersifat dinamis sehingga dapat berkembang sesuai dengan penambahan penyakit dan gejala.
+
+## decision support system for diabetes
+this dds of diabetes was build using association rule to generate list of questions that was written inside of the database by using relationship from rule table. this projects can grow with many evidence and objectives 
+
+### Instalation
 
 create new blank db and setup your data base
 
-# Using CLI type command
+### Using CLI type command
 ```
 php spark migrate
 php spark db:seed StartSeeder
 ```
-# to view 
+### to view 
 ```
 php spark serve
 ```
