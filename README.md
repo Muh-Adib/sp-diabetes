@@ -1,3 +1,17 @@
+# Instalation
+
+create new blank db and setup your data base
+
+# Using CLI type command
+
+php spark migrate
+php spark db:seed StartSeeder
+
+# to view 
+
+php spark serve
+
+
 # CodeIgniter 4 Framework
 
 ## What is CodeIgniter?
