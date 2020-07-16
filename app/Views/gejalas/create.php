@@ -29,7 +29,7 @@
                         <input type="text" name="kode" class="form-control" value="<?php echo $max;?>" required>
                     </div>
                     <div class="form-group">
-                        <label for="nama">Detail</label>
+                        <label for="detail">Detail</label>
                         <input type="text" name="detail" class="form-control" required>
                     </div>
                     <div class="form-group">

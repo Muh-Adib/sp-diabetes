@@ -27,8 +27,8 @@ class Rule extends BaseController
 	public function index()
 	{
 		$data = [
-            'listPenyakit'=> $this->model_p->paginate(10),
-            'listGejala'=> $this->model_g->findAll(),
+            'penyakit'=> $this->model_p->paginate(10),
+            'gejala'=> $this->model_g->findAll(),
 			'rule' => $this->model->findAll(),
 			'pager' => $this->model_p->pager,
 			'title' => 'Rule LIST'
@@ -43,8 +43,8 @@ class Rule extends BaseController
 	{
         
 		$data = ['title' => 'Tambah Rule Baru',
-        		 'list_p'=> $this->model_p->findAll(),
-				 'list_g'=> $this->model_g->findAll(),
+        		 'penyakit'=> $this->model_p->findAll(),
+				 'gejala'=> $this->model_g->getResult('array')->findAll(),
 				 'rule' => $this->model->findAll(),
 				];
 

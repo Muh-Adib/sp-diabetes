@@ -50,18 +50,18 @@ class gejala extends BaseController
 		$primaryKey = 'id';
 		$id =$this->request->getPost('id');
 		$kode = $this->request->getPost('kode');
-		$nama = $this->request->getPost('nama');
+		$nama = $this->request->getPost('detail');
 		
 		if($id!=null){
 			$gejala = [
 				'id'=> $id,
 				'kode' => $kode,
-				'nama' => $nama,
+				'detail' => $nama,
 			];}
 		else{
 			$gejala = [
 				'kode' => $kode,
-				'nama' => $nama,
+				'detail' => $nama,
 			];
 		}
 			

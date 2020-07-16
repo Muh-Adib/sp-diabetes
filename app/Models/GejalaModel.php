@@ -16,7 +16,7 @@ class GejalaModel extends Model
     
     protected $validationRules = [
         'kode' => 'required',
-        'nama' => 'required'
+        'detail' => 'required'
     ];
 
     protected $skipValidation = false;

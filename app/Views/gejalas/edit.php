@@ -32,8 +32,8 @@
                         <input type="text" name="kode" value="<?php echo $gejala['kode'];?>" class="form-control" required>
                     </div>
                     <div class="form-group">
-                        <label for="nama">Detail</label>
-                        <input type="text" name="nama" value="<?php echo $gejala['detail'];?>" class="form-control" required>
+                        <label for="detail">Detail</label>
+                        <input type="text" name="detail" value="<?php echo $gejala['detail'];?>" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <button class="btn btn-primary">Update</button>
